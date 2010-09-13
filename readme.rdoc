@@ -11,8 +11,6 @@ This plugin is not yet available as a gem. I will submit it after i've written p
 Traditional plugin:
 
   script/plugin install git://github.com/jhnvz/zoho_invoice.git
-  
-After that, you can run "rake gems:install" to install the gem if you don't already have it.
 
 == Configuration
 
