@@ -14,7 +14,7 @@ module ZohoInvoice
     end
     
     def list_estimates_for_customer(customer_id)
-      response = self.class.post("/estimates/customer/#{customer_id}", :body => @authorization, :format => :xml)
+      response = self.class.get("/estimates/customer/#{customer_id}", :query => @authorization, :format => :xml)
       Hashie::Mash.new(response).Response.Estimates.Estimate
     end      
     
@@ -25,12 +25,12 @@ module ZohoInvoice
     
     # EXAMPLE: 
     def create_estimate(params = {})
-      response = self.class.post('/estimates/create', :query => request_body(params), :format => :xml)
+      response = self.class.post('/estimates/create', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Estimate
     end
     
     def update_estimate(params = {})
-      response = self.class.post('/estimates/update', :query => request_body(params), :format => :xml)
+      response = self.class.post('/estimates/update', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Estimate
     end
     
@@ -42,7 +42,7 @@ module ZohoInvoice
     # Sends an estimate to the Customer for whom the estimate was raised. 
     # Parameters to be passed: Custom.Subject, Custom.Body, EstimateID
     def send_estimate(params = {})
-      response = self.class.post('/estimates/send', :query => request_body(params), :format => :xml)
+      response = self.class.post('/estimates/send', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response)
     end    
     

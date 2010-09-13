@@ -25,12 +25,12 @@ module ZohoInvoice
     
     # EXAMPLE: create_customer(:customer => {:name => 'Someone'})
     def create_customer(params = {})
-      response = self.class.post('/customers/create', request_body(params), :format => :xml)
+      response = self.class.post('/customers/create', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Customer
     end
     
     def update_customer(params = {})
-      response = self.class.post('/customers/update', :query => request_body(params), :format => :xml)
+      response = self.class.post('/customers/update', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Customer
     end
     
@@ -47,14 +47,14 @@ module ZohoInvoice
     # Sends a statement to the Customer specified. 
     # Params to be passed: Custom.Subject, Custom.Body, CustomerID, StartDate, EndDate 
     def send_customer_statement(params ={})
-      response = self.class.post('/customers/sendstatement', :query => request_body(params), :format => :xml)
+      response = self.class.post('/customers/sendstatement', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response)
     end
     
     # View a customer statement.
     # Params to be passed: CustomerID, StartDate, EndDate    
     def view_customer_statement(params ={})
-      response = self.class.post('/customers/getstatement', :query => request_body(params), :format => :xml)
+      response = self.class.post('/customers/getstatement', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Statement
     end    
   

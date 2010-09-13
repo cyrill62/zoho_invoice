@@ -14,7 +14,7 @@ module ZohoInvoice
     end
     
     def list_invoices_for_customer(customer_id)
-      response = self.class.post("/invoices/customer/#{customer_id}", :body => @authorization, :format => :xml)
+      response = self.class.get("/invoices/customer/#{customer_id}", :query => @authorization, :format => :xml)
       Hashie::Mash.new(response).Response.Invoices.Invoice
     end    
     
@@ -25,12 +25,12 @@ module ZohoInvoice
     
     # EXAMPLE: create_customer(:customer => {:name => 'Someone'})
     def create_invoice(params = {})
-      response = self.class.post('/invoices/create', :query => request_body(params), :format => :xml)
+      response = self.class.post('/invoices/create', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Invoice
     end
     
     def update_invoice(params = {})
-      response = self.class.post('/invoices/update', :query => request_body(params), :format => :xml)
+      response = self.class.post('/invoices/update', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Invoice
     end
     
@@ -42,14 +42,14 @@ module ZohoInvoice
     # Sends an Invoice to the Customer for whom the invoice was raised. 
     # Parameters to be passed: Custom.Subject, Custom.Body, InvoiceID 
     def send_invoice(params = {})
-      response = self.class.post('/invoices/send', :query => request_body(params), :format => :xml)
+      response = self.class.post('/invoices/send', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response)
     end    
     
     # Sends an Invoice to the Customer for whom the invoice was raised. 
     # Parameters to be passed: Custom.Subject, Custom.Body, InvoiceID
     def send_invoice_reminder(params = {})
-      response = self.class.post('/invoices/sendreminder', :query => request_body(params), :format => :xml)
+      response = self.class.post('/invoices/sendreminder', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response)
     end
     

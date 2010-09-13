@@ -10,12 +10,12 @@ module ZohoInvoice
     
     # EXAMPLE:
     def create_payment(params = {})
-      response = self.class.post('/payments/create', :query => request_body(params), :format => :xml)
+      response = self.class.get('/payments/create', :query => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Payment
     end
     
     def create_payment(params = {})
-      response = self.class.post('/payments/update', :query => request_body(params), :format => :xml)
+      response = self.class.post('/payments/update', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.Payment
     end
     
@@ -33,12 +33,12 @@ module ZohoInvoice
     
     # EXAMPLE:
     def create_credit(params = {})
-      response = self.class.post('/customers/credits/create', :query => request_body(params), :format => :xml)
+      response = self.class.post('/customers/credits/create', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.CustomerCredit
     end
     
     def update_credit(params = {})
-      response = self.class.post('/customers/credits/update', :query => request_body(params), :format => :xml)
+      response = self.class.post('/customers/credits/update', :body => request_body(params), :format => :xml)
       Hashie::Mash.new(response).Response.CustomerCredit
     end
     
