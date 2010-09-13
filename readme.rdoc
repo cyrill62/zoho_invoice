@@ -1,0 +1,41 @@
+= Zoho Invoice
+
+Wrapper for the zoho invoice api
+
+== Installation
+
+This plugin is not yet available as a gem. I will submit it after i've written proper test cases.
+
+==== Plugin
+
+Traditional plugin:
+
+  script/plugin install git://github.com/jhnvz/zoho_invoice.git
+  
+After that, you can run "rake gems:install" to install the gem if you don't already have it.
+
+== Configuration
+
+Configuration is done in the config/zoho_invoice.yml file. (see sample_zoho_invoice)
+
+== Usage
+
+  client = ZohoInvoice::Client.new
+  client.list_items => [item1, item2]
+  client.list_invoices => [item1, item2]
+  
+I will write full documentation on the API methods. In the meanwhile check the classes.  
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Johan van Zonneveld. See LICENSE for details.
