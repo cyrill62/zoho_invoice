@@ -3,6 +3,6 @@ require 'hashie'
 
 require 'zoho_invoice/client'
 
-module ZohoInvoice  
+module ZohoInvoice
   VERSION = '0.0.1'
 end

@@ -21,9 +21,9 @@ Configuration is done in the config/zoho_invoice.yml file. (see sample_zoho_invo
   client = ZohoInvoice::Client.new
   client.list_items => [item1, item2]
   client.list_invoices => [invoice1, invoice2]
-  
-  # example create client  
-  response = client.create_customer('Customer' => {'Name' => self.company_name, 
+
+  # example create client
+  response = client.create_customer('Customer' => {'Name' => self.company_name,
 	                                'CurrencyCode' => 'EUR',
 	                                'BillingAddress' => self.street,
 	                                'BillingCity' => self.city,
@@ -37,14 +37,14 @@ Configuration is done in the config/zoho_invoice.yml file. (see sample_zoho_invo
 	                                'CustomFields' => {'CustomFieldLabel1' => "KVK nummer",
 	                                                   'CustomFieldValue1' => self.kvk_number,
 	                                                   'CustomFieldLabel2' => "BTW nummer",
-	                                                   'CustomFieldValue2' => self.vat_number}                              
+	                                                   'CustomFieldValue2' => self.vat_number}
 	                                })
-  response.Customer.Name => "Name"                                
-	                                  
-I will write full documentation on the API methods. In the meanwhile check the classes.  
+  response.Customer.Name => "Name"
+
+I will write full documentation on the API methods. In the meanwhile check the classes.
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
